@@ -37,7 +37,6 @@ public class ClassroomServiceImpl implements ClassroomService {
         classroom1.setName(className2);
         classroom2.setName(className1);
         classroomMapper.updateByPrimaryKey(classroom1);
-        int i = 1 / 0;
         classroomMapper.updateByPrimaryKey(classroom2);
     }
 }

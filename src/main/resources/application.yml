@@ -1,3 +1,6 @@
+server:
+  servlet:
+    context-path: /mybatis
 spring:
   datasource:
     username: root
@@ -44,5 +47,6 @@ logging:
     com.my.mybatis: debug
   file:
     name: mybatis.log
-    path: classpath:log
+    path: D:/log
     clean-history-on-start: true
+

@@ -12,8 +12,11 @@ import java.sql.SQLException;
 @Component
 public class UReportDatasource implements BuildinDatasource {
 
-    @Autowired
-    private DataSource dataSource;
+    private final DataSource dataSource;
+
+    public UReportDatasource(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
 
     @Override
     public String name() {

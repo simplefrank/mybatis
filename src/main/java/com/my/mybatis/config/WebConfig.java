@@ -18,6 +18,11 @@ public class WebConfig implements WebMvcConfigurer {
         return new MyInterceptor();
     }
 
+    /**
+     * 添加拦截器
+     *
+     * @param registry 注册器
+     */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(myInterceptor).addPathPatterns("/**");
