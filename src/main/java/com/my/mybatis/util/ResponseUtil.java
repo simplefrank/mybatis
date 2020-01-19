@@ -12,7 +12,7 @@ import java.util.Map;
 public class ResponseUtil {
     public static void outputSuccess(HttpServletResponse response, Object data){
         response.setCharacterEncoding("UTF-8");
-        response.setContentType("text/html; charset=utf-8");
+        response.setContentType("application/json; charset=utf-8");
         PrintWriter pw = null;
         try {
             pw = response.getWriter();

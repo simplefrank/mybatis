@@ -14,7 +14,7 @@
         select * from class
     </select>
 
-    <insert id="insert" parameterType="Classroom">
+    <insert id="insert" parameterType="Classroom" useGeneratedKeys="true" keyProperty="id">
         insert into class(name) values(#{name})
     </insert>
 

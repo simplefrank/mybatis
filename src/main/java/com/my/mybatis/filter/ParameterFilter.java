@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @Component
-public class AuthorityFilter implements Filter {
+public class ParameterFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
 
@@ -24,8 +24,8 @@ public class AuthorityFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
-        StaticLog.debug("这里是权限过滤器");
-        filterChain.doFilter(request, response);
+        StaticLog.debug("参数过滤操作");
+        filterChain.doFilter(new ParameterRequestWrapper(request), response);
     }
 
 

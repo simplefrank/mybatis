@@ -1,13 +1,17 @@
 package com.my.mybatis.entity;
 
-import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-public class Student {
+import java.io.Serializable;
+
+@JsonIgnoreProperties(value = { "handler" }) //开启懒加载时需要该注解，使json序列化时忽略 bean 中的一些不需要转化的属性
+public class Student implements Serializable {
     private Integer id;
     private String name;
     private String sex;
     private Integer age;
     private Classroom classroom;
+
     public Student() {
     }
 

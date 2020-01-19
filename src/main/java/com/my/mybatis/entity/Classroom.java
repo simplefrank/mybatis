@@ -1,8 +1,10 @@
 package com.my.mybatis.entity;
 
-public class Classroom {
-    Integer id;
-    String name;
+import java.io.Serializable;
+
+public class Classroom implements Serializable {
+    private Integer id;
+    private String name;
 
     public Classroom() {
     }
