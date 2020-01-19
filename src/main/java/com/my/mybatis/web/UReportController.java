@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.validation.constraints.NotBlank;
 import java.util.HashMap;
 import java.util.Map;
@@ -18,8 +17,9 @@ import java.util.Map;
 @RequestMapping("/report")
 public class UReportController {
     @RequestMapping("/export/html/{fileName}")
-    public void exportHtml(@NotBlank(message = "文件名不能为空") @PathVariable("fileName") String fileName, HttpServletRequest request, HttpServletResponse response){
+    public Object exportHtml(@NotBlank(message = "文件名不能为空") @PathVariable("fileName") String fileName, HttpServletRequest request){
         Map<String, Object> params = new HashMap<>();
+        params.put("id", request.getParameter("id"));
         String realFileName = "file:" + fileName + ".ureport.xml";
         ExportManager exportManager = (ExportManager) Utils.getApplicationContext().getBean(ExportManager.BEAN_ID);
         HtmlReport htmlReport = exportManager.exportHtml(realFileName, request.getContextPath(), params);
@@ -30,6 +30,6 @@ public class UReportController {
         sb.append("</style>");
         //输出报表内容
         sb.append(htmlReport.getContent());
-        ResponseUtil.outputSuccess(response, sb);
+        return sb;
     }
 }
