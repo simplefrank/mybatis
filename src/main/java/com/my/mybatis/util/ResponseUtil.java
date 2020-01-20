@@ -13,23 +13,17 @@ public class ResponseUtil {
     public static void outputSuccess(HttpServletResponse response, Object data){
         response.setCharacterEncoding("UTF-8");
         response.setContentType("application/json; charset=utf-8");
-        PrintWriter pw = null;
-        try {
-            pw = response.getWriter();
+        try (PrintWriter pw = response.getWriter()) {
             Map<String, Object> map = new HashMap<>();
             map.put("code", 0);
             map.put("msg", "请求成功");
-            if (data != null){
+            if (data != null) {
                 map.put("data", JSON.toJSONString(data, SerializerFeature.WriteMapNullValue));
             }
             pw.write(JSON.toJSONString(map, SerializerFeature.WriteMapNullValue));
             pw.flush();
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            if (pw != null){
-                pw.close();
-            }
         }
     }
 
